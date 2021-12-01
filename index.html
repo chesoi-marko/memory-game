@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory-Game</title>
+</head>
+
+<body>
+
+    <h1>Memory Game</h1>
+    <div id="tavolo"></div>
+    <script>
+
+        let tavolo = document.querySelector("#tavolo");
+        let mazzo = [
+            { nome: 'ballFish', img: "images/ballFish.png" },
+            { nome: 'crab',     img: "images/crab.png" },
+            { nome: 'delphin', img: "images/delphin.png" },
+            { nome: 'seeHorse', img: "images/seeHorse.png" },
+            { nome: 'seeShell', img: "images/seeShell.png" },
+            { nome: 'seeStar', img: "images/seeStar.png" },
+            { nome: 'shark', img: "images/shark.png" },
+            { nome: 'stingRay', img: "images/stingRay.png" },
+            { nome: 'turtle', img: "images/turtle.png" },
+            { nome: 'whale', img: "images/whale.png" },
+            { nome: 'ballFish', img: "images/ballFish.png" },
+            { nome: 'crab', img: "images/crab.png" },
+            { nome: 'delphin', img: "images/delphin.png" },
+            { nome: 'seeHorse', img: "images/seeHorse.png" },
+            { nome: 'seeShell', img: "images/seeShell.png" },
+            { nome: 'seeStar', img: "images/seeStar.png" },
+            { nome: 'shark', img: "images/shark.png" },
+            { nome: 'stingRay', img: "images/stingRay.png" },
+            { nome: 'turtle', img: "images/turtle.png" },
+            { nome: 'whale', img: "images/whale.png" }
+        ];
+ carteGirate = []; //{nome,posizione} variabile globale (valida anche fuori dslla funzione 
+
+
+function posaSuTavolo(){
+ //posizione gni carta presente nel mazzo sul tavolo
+for(let posizione = 0 ;posizione < mazzo.length ; posizione++){
+    console.log(mazzo[posizione].nome);
+    let carta = document.createElement("img");
+    carta.setAttribute('src','images/blank.png');
+    carta.setAttribute("pos", posizione);
+    carta.addEventListener('click', giraCarta);
+    tavolo.appendChild(carta);
+}
+
+}
+
+
+function giraCarta(){
+posizione = this.getAttribute("pos");
+this.setAttribute("src",mazzo[posizione].img);
+mano(mazzo[posizione].name , posizione)
+}
+posaSuTavolo();
+
+function mano(nome,posizione){ //gestisce un turno del gioco 
+    // una voltab che iol giocatore scopre due carte
+    //1. controla se le carte coniicidono o meno
+    //a. se coincidono rimuove le carte dal tavolo
+    //b. se NON coincidiono  rigira le carte}
+ carteGirate.push({n: nome, p: posizione})
+ if(carteGirate.length ==2 ) {
+    if (carteGirate[0].nome == carteGirate [1].nome) {
+        carteGirate[0].setAttribute('src', 'images/vuota.png');
+        carteGirate[0].setAttribute('src', 'images/vuota.png');{}
+ //   } else {
+ //       
+ //        } else {
+ //       }
+ //       
+ //}
+
+
+}
+   </script>
+
+</body>
+
+</html>
